@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-06-13 Mon 12:57 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Efficiency In The Application of Model Informed Drug Development (MIDD) in Practice</title>
+<meta name="author" content="Denny, William (Human Predictions); Tensfeldt, Thomas G (Pfizer, Inc)" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Efficiency In The Application of Model Informed Drug Development (MIDD) in Practice</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org8887bfd">1. Authors</a>
+<ul>
+<li><a href="#org12f17c2">1.1. William Denny</a></li>
+<li><a href="#org358909c">1.2. Tom Tensfeldt</a></li>
+<li><a href="#org689c03b">1.3. etc</a></li>
+</ul>
+</li>
+<li><a href="#org7a62928">2. <span class="todo TODO">TODO</span> Are there existing position papers in this space? - do search</a></li>
+<li><a href="#orga028e86">3. Abstract</a></li>
+<li><a href="#orge6d3c30">4. Outline</a>
+<ul>
+<li><a href="#org3aec7b0">4.1. The potential of MIDD</a></li>
+<li><a href="#org78a2269">4.2. How does an analyst get started in my role company in applying/industrialization of MIDD?</a></li>
+<li><a href="#orgb60abde">4.3. Ideal characteristics of MIDD technology and infrastructure environment</a>
+<ul>
+<li><a href="#orgc4741e6">4.3.1. Traceability</a></li>
+<li><a href="#org2e2bb0b">4.3.2. Flexibility/Modularity</a></li>
+<li><a href="#orgd77472d">4.3.3. Discoverability</a></li>
+<li><a href="#org6467880">4.3.4. Reproducibility</a></li>
+<li><a href="#org6d3eef8">4.3.5. Usability</a></li>
+<li><a href="#org03032f2">4.3.6. Compatibility</a></li>
+<li><a href="#orga9f8120">4.3.7. Security</a></li>
+<li><a href="#orge135115">4.3.8. Maintainability</a></li>
+<li><a href="#org082c6ae">4.3.9. Supportability</a></li>
+<li><a href="#org41fc15a">4.3.10. Characteristic Examples</a></li>
+</ul>
+</li>
+<li><a href="#orgdf4c03e">4.4. Ideal components of an MIDD technology and instrastructure environment</a>
+<ul>
+<li><a href="#orgc8cfd0f">4.4.1. Repository system</a></li>
+<li><a href="#org3549610">4.4.2. Library of standard codes/models/etc</a></li>
+<li><a href="#orgcf3afe8">4.4.3. Direct connection to compute environments (cloud/internal cluster/etc.)</a></li>
+<li><a href="#org101938d">4.4.4. Quality system</a></li>
+<li><a href="#orgdf5681c">4.4.5. reporting capabilities</a></li>
+</ul>
+</li>
+<li><a href="#orgce7661d">4.5. Use cases</a>
+<ul>
+<li><a href="#org35b65f1">4.5.1. Clinical PKPD</a></li>
+<li><a href="#orga7df3d8">4.5.2. Preclinical PKPD</a></li>
+<li><a href="#org19d34f4">4.5.3. Application of MIDD</a></li>
+<li><a href="#org2025180">4.5.4. Application of EQDD (Enhanced Quantitative Decision Making - Ken Kowalski PTS approaches)</a></li>
+<li><a href="#org5c8b8c3">4.5.5. Application for QSP</a></li>
+</ul>
+</li>
+<li><a href="#org7cf35b8">4.6. What do I need to prepare for internal/external regulatory audits?</a>
+<ul>
+<li><a href="#org18c1728">4.6.1. do I need to do anything?</a></li>
+<li><a href="#org23216b7">4.6.2. what does my organization do?</a></li>
+</ul>
+</li>
+<li><a href="#org46ffa4b">4.7. Controlled Environment (Traceability)</a>
+<ul>
+<li><a href="#org46e7300">4.7.1. Commercial systems</a></li>
+<li><a href="#org9c11bc1">4.7.2. Can I get by with</a></li>
+</ul>
+</li>
+<li><a href="#orgfc2f343">4.8. Elements of Reproducibility</a>
+<ul>
+<li><a href="#org78b40d7">4.8.1. How does one get started?</a></li>
+</ul>
+</li>
+<li><a href="#org4ac8517">4.9. How to influence your environment/IT</a></li>
+<li><a href="#orgb280f84">4.10. Computation Environment Options</a>
+<ul>
+<li><a href="#org68cd01e">4.10.1. Local/Laptop - how much can you achieve</a></li>
+<li><a href="#org4506189">4.10.2. Small Server</a></li>
+<li><a href="#org582f3e2">4.10.3. Cloud</a></li>
+</ul>
+</li>
+<li><a href="#org0c942fe">4.11. Validation?</a>
+<ul>
+<li><a href="#orgf4f437a">4.11.1. Do I need to do this?</a></li>
+<li><a href="#org98fe698">4.11.2. Who does it?</a></li>
+<li><a href="#org4a6746a">4.11.3. What documentation?</a></li>
+<li><a href="#org630a2c8">4.11.4. For PKPD Tools too?</a></li>
+<li><a href="#org2737080">4.11.5. Just for my compute environment?</a></li>
+<li><a href="#org10dc825">4.11.6. How much information do I need to maintain for my compute environment?</a></li>
+</ul>
+</li>
+<li><a href="#org89e0f48">4.12. Resources to get started</a>
+<ul>
+<li><a href="#org2365706">4.12.1. ISoP of course</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8887bfd" class="outline-2">
+<h2 id="org8887bfd"><span class="section-number-2">1.</span> Authors</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org12f17c2" class="outline-3">
+<h3 id="org12f17c2"><span class="section-number-3">1.1.</span> William Denny</h3>
+</div>
+<div id="outline-container-org358909c" class="outline-3">
+<h3 id="org358909c"><span class="section-number-3">1.2.</span> Tom Tensfeldt</h3>
+</div>
+<div id="outline-container-org689c03b" class="outline-3">
+<h3 id="org689c03b"><span class="section-number-3">1.3.</span> etc</h3>
+</div>
+</div>
+<div id="outline-container-org7a62928" class="outline-2">
+<h2 id="org7a62928"><span class="section-number-2">2.</span> <span class="todo TODO">TODO</span> Are there existing position papers in this space? - do search</h2>
+</div>
+
+<div id="outline-container-orga028e86" class="outline-2">
+<h2 id="orga028e86"><span class="section-number-2">3.</span> Abstract</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+The positioning of Model Informed Drug Development as the quantitative basis for modern drug development is well understood and accepted in commercial practice and regulatory evaluation of new drug candidates. [MIDD Paper]
+</p>
+
+<p>
+The gap between acceptance of the practice and efficient implementation and application of modeling and simulation in drug development can remain a barrier to adoption and delivery for many organizations.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge6d3c30" class="outline-2">
+<h2 id="orge6d3c30"><span class="section-number-2">4.</span> Outline</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org3aec7b0" class="outline-3">
+<h3 id="org3aec7b0"><span class="section-number-3">4.1.</span> The potential of MIDD</h3>
+</div>
+<div id="outline-container-org78a2269" class="outline-3">
+<h3 id="org78a2269"><span class="section-number-3">4.2.</span> How does an analyst get started in my role company in applying/industrialization of MIDD?</h3>
+</div>
+<div id="outline-container-orgb60abde" class="outline-3">
+<h3 id="orgb60abde"><span class="section-number-3">4.3.</span> Ideal characteristics of MIDD technology and infrastructure environment</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+The characteristics of an ideal environment supporting delivery of MIDD should consider some of the following elements.
+</p>
+</div>
+
+<div id="outline-container-orgc4741e6" class="outline-4">
+<h4 id="orgc4741e6"><span class="section-number-4">4.3.1.</span> Traceability</h4>
+</div>
+
+<div id="outline-container-org2e2bb0b" class="outline-4">
+<h4 id="org2e2bb0b"><span class="section-number-4">4.3.2.</span> Flexibility/Modularity</h4>
+</div>
+
+<div id="outline-container-orgd77472d" class="outline-4">
+<h4 id="orgd77472d"><span class="section-number-4">4.3.3.</span> Discoverability</h4>
+</div>
+
+<div id="outline-container-org6467880" class="outline-4">
+<h4 id="org6467880"><span class="section-number-4">4.3.4.</span> Reproducibility</h4>
+</div>
+
+<div id="outline-container-org6d3eef8" class="outline-4">
+<h4 id="org6d3eef8"><span class="section-number-4">4.3.5.</span> Usability</h4>
+</div>
+
+<div id="outline-container-org03032f2" class="outline-4">
+<h4 id="org03032f2"><span class="section-number-4">4.3.6.</span> Compatibility</h4>
+</div>
+
+<div id="outline-container-orga9f8120" class="outline-4">
+<h4 id="orga9f8120"><span class="section-number-4">4.3.7.</span> Security</h4>
+</div>
+
+<div id="outline-container-orge135115" class="outline-4">
+<h4 id="orge135115"><span class="section-number-4">4.3.8.</span> Maintainability</h4>
+</div>
+
+<div id="outline-container-org082c6ae" class="outline-4">
+<h4 id="org082c6ae"><span class="section-number-4">4.3.9.</span> Supportability</h4>
+</div>
+
+<div id="outline-container-org41fc15a" class="outline-4">
+<h4 id="org41fc15a"><span class="section-number-4">4.3.10.</span> Characteristic Examples</h4>
+<div class="outline-text-4" id="text-4-3-10">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Characteristic</th>
+<th scope="col" class="org-left">Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Traceability</td>
+<td class="org-left">- Source of contributing elements to an IB update/any regulatory document</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Identify sources informing Clinical Milestone Decisions / Submissions</td>
+</tr>
+
+<tr>
+<td class="org-left">Flexibility/Modularity</td>
+<td class="org-left">- Introduce new Modeling Workflows from existing Systems, Tools creating new methodologies</td>
+</tr>
+
+<tr>
+<td class="org-left">Discoverability</td>
+<td class="org-left">- Locate MIDD Results contributing to Label Statements and existing model types</td>
+</tr>
+
+<tr>
+<td class="org-left">Reproducibility</td>
+<td class="org-left">- Full environment information for an analysis for 5+ years ago</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Reproduce results with original or updated tools, environments</td>
+</tr>
+
+<tr>
+<td class="org-left">Usability</td>
+<td class="org-left">- New user is ready to run analysis in 1 week</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- New tool is seamlessly added to environment</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Tool update testing automation</td>
+</tr>
+
+<tr>
+<td class="org-left">Compatibility</td>
+<td class="org-left">- Creating complete automation workflows as with visual representation of relationships between steps/data/reports</td>
+</tr>
+
+<tr>
+<td class="org-left">Security</td>
+<td class="org-left">- Control access/share blinded/restricted data in alignment with policy/SOP</td>
+</tr>
+
+<tr>
+<td class="org-left">Maintainability</td>
+<td class="org-left">- As new features become available for existing tools, they are rapidly rolled out to users</td>
+</tr>
+
+<tr>
+<td class="org-left">Supportability</td>
+<td class="org-left">- Fast resolution to even non-critical user issues</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Efficient use of expertise, reduce business effort</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdf4c03e" class="outline-3">
+<h3 id="orgdf4c03e"><span class="section-number-3">4.4.</span> Ideal components of an MIDD technology and instrastructure environment</h3>
+<div class="outline-text-3" id="text-4-4">
+</div>
+<div id="outline-container-orgc8cfd0f" class="outline-4">
+<h4 id="orgc8cfd0f"><span class="section-number-4">4.4.1.</span> Repository system</h4>
+<div class="outline-text-4" id="text-4-4-1">
+</div>
+<ol class="org-ol">
+<li><a id="org6414b2c"></a>Artifact management<br /></li>
+<li><a id="org5ae5519"></a>artifact versioning<br /></li>
+<li><a id="org7c09244"></a>Security/access control features<br /></li>
+<li><a id="org3c3dd06"></a>system validation/qualification repository<br /></li>
+<li><a id="orgb98945e"></a>analysis tools validation/qualification repository<br /></li>
+</ol>
+</div>
+<div id="outline-container-org3549610" class="outline-4">
+<h4 id="org3549610"><span class="section-number-4">4.4.2.</span> Library of standard codes/models/etc</h4>
+</div>
+<div id="outline-container-orgcf3afe8" class="outline-4">
+<h4 id="orgcf3afe8"><span class="section-number-4">4.4.3.</span> Direct connection to compute environments (cloud/internal cluster/etc.)</h4>
+</div>
+<div id="outline-container-org101938d" class="outline-4">
+<h4 id="org101938d"><span class="section-number-4">4.4.4.</span> Quality system</h4>
+</div>
+<div id="outline-container-orgdf5681c" class="outline-4">
+<h4 id="orgdf5681c"><span class="section-number-4">4.4.5.</span> reporting capabilities</h4>
+<div class="outline-text-4" id="text-4-4-5">
+<p>
+preferably a reporting system that incorporates traceability to source components and outcomes (modeling results, reports, diagnostics, etc.)
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgce7661d" class="outline-3">
+<h3 id="orgce7661d"><span class="section-number-3">4.5.</span> Use cases</h3>
+<div class="outline-text-3" id="text-4-5">
+</div>
+<div id="outline-container-org35b65f1" class="outline-4">
+<h4 id="org35b65f1"><span class="section-number-4">4.5.1.</span> Clinical PKPD</h4>
+</div>
+<div id="outline-container-orga7df3d8" class="outline-4">
+<h4 id="orga7df3d8"><span class="section-number-4">4.5.2.</span> Preclinical PKPD</h4>
+</div>
+<div id="outline-container-org19d34f4" class="outline-4">
+<h4 id="org19d34f4"><span class="section-number-4">4.5.3.</span> Application of MIDD</h4>
+</div>
+<div id="outline-container-org2025180" class="outline-4">
+<h4 id="org2025180"><span class="section-number-4">4.5.4.</span> Application of EQDD (Enhanced Quantitative Decision Making - Ken Kowalski PTS approaches)</h4>
+</div>
+<div id="outline-container-org5c8b8c3" class="outline-4">
+<h4 id="org5c8b8c3"><span class="section-number-4">4.5.5.</span> Application for QSP</h4>
+</div>
+</div>
+<div id="outline-container-org7cf35b8" class="outline-3">
+<h3 id="org7cf35b8"><span class="section-number-3">4.6.</span> What do I need to prepare for internal/external regulatory audits?</h3>
+<div class="outline-text-3" id="text-4-6">
+</div>
+<div id="outline-container-org18c1728" class="outline-4">
+<h4 id="org18c1728"><span class="section-number-4">4.6.1.</span> do I need to do anything?</h4>
+</div>
+<div id="outline-container-org23216b7" class="outline-4">
+<h4 id="org23216b7"><span class="section-number-4">4.6.2.</span> what does my organization do?</h4>
+</div>
+</div>
+<div id="outline-container-org46ffa4b" class="outline-3">
+<h3 id="org46ffa4b"><span class="section-number-3">4.7.</span> Controlled Environment (Traceability)</h3>
+<div class="outline-text-3" id="text-4-7">
+</div>
+<div id="outline-container-org46e7300" class="outline-4">
+<h4 id="org46e7300"><span class="section-number-4">4.7.1.</span> Commercial systems</h4>
+</div>
+<div id="outline-container-org9c11bc1" class="outline-4">
+<h4 id="org9c11bc1"><span class="section-number-4">4.7.2.</span> Can I get by with</h4>
+<div class="outline-text-4" id="text-4-7-2">
+</div>
+<ol class="org-ol">
+<li><a id="orgcfa6f07"></a>a github account?<br /></li>
+<li><a id="org3827b92"></a>internal github/gitea server<br /></li>
+<li><a id="org18408ed"></a>how?<br /></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgfc2f343" class="outline-3">
+<h3 id="orgfc2f343"><span class="section-number-3">4.8.</span> Elements of Reproducibility</h3>
+<div class="outline-text-3" id="text-4-8">
+</div>
+<div id="outline-container-org78b40d7" class="outline-4">
+<h4 id="org78b40d7"><span class="section-number-4">4.8.1.</span> How does one get started?</h4>
+</div>
+</div>
+<div id="outline-container-org4ac8517" class="outline-3">
+<h3 id="org4ac8517"><span class="section-number-3">4.9.</span> How to influence your environment/IT</h3>
+</div>
+<div id="outline-container-orgb280f84" class="outline-3">
+<h3 id="orgb280f84"><span class="section-number-3">4.10.</span> Computation Environment Options</h3>
+<div class="outline-text-3" id="text-4-10">
+</div>
+<div id="outline-container-org68cd01e" class="outline-4">
+<h4 id="org68cd01e"><span class="section-number-4">4.10.1.</span> Local/Laptop - how much can you achieve</h4>
+</div>
+<div id="outline-container-org4506189" class="outline-4">
+<h4 id="org4506189"><span class="section-number-4">4.10.2.</span> Small Server</h4>
+</div>
+<div id="outline-container-org582f3e2" class="outline-4">
+<h4 id="org582f3e2"><span class="section-number-4">4.10.3.</span> Cloud</h4>
+<div class="outline-text-4" id="text-4-10-3">
+</div>
+<ol class="org-ol">
+<li><a id="org7f33a64"></a>Platforms: Azure/AWS/Google/Oracle<br /></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org0c942fe" class="outline-3">
+<h3 id="org0c942fe"><span class="section-number-3">4.11.</span> Validation?</h3>
+<div class="outline-text-3" id="text-4-11">
+</div>
+<div id="outline-container-orgf4f437a" class="outline-4">
+<h4 id="orgf4f437a"><span class="section-number-4">4.11.1.</span> Do I need to do this?</h4>
+</div>
+<div id="outline-container-org98fe698" class="outline-4">
+<h4 id="org98fe698"><span class="section-number-4">4.11.2.</span> Who does it?</h4>
+</div>
+<div id="outline-container-org4a6746a" class="outline-4">
+<h4 id="org4a6746a"><span class="section-number-4">4.11.3.</span> What documentation?</h4>
+</div>
+<div id="outline-container-org630a2c8" class="outline-4">
+<h4 id="org630a2c8"><span class="section-number-4">4.11.4.</span> For PKPD Tools too?</h4>
+</div>
+<div id="outline-container-org2737080" class="outline-4">
+<h4 id="org2737080"><span class="section-number-4">4.11.5.</span> Just for my compute environment?</h4>
+</div>
+<div id="outline-container-org10dc825" class="outline-4">
+<h4 id="org10dc825"><span class="section-number-4">4.11.6.</span> How much information do I need to maintain for my compute environment?</h4>
+</div>
+</div>
+<div id="outline-container-org89e0f48" class="outline-3">
+<h3 id="org89e0f48"><span class="section-number-3">4.12.</span> Resources to get started</h3>
+<div class="outline-text-3" id="text-4-12">
+</div>
+<div id="outline-container-org2365706" class="outline-4">
+<h4 id="org2365706"><span class="section-number-4">4.12.1.</span> ISoP of course</h4>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Denny, William (Human Predictions); Tensfeldt, Thomas G (Pfizer, Inc)</p>
+<p class="date">Created: 2022-06-13 Mon 12:57</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

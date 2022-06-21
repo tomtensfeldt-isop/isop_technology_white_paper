@@ -1,0 +1,112 @@
+#+Title: Efficiency In The Application of Model Informed Drug Development (MIDD) in Practice
+#+Author: Denny, William (Human Predictions); Tensfeldt, Thomas G (Pfizer, Inc)
+
+* Authors
+** William Denny
+** Tom Tensfeldt
+** etc
+* TODO Are there existing position papers in this space? - do search
+
+* Abstract
+The positioning of Model Informed Drug Development as the quantitative basis for modern drug development is well understood and accepted in commercial practice and regulatory evaluation of new drug candidates. [MIDD Paper]
+
+The gap between acceptance of the practice and efficient implementation and application of modeling and simulation in drug development can remain a barrier to adoption and delivery for many organizations.
+
+* Outline
+** The potential of MIDD
+** How does an analyst get started in my role company in applying/industrialization of MIDD?
+** Ideal characteristics of MIDD technology and infrastructure environment
+
+The characteristics of an ideal environment supporting delivery of MIDD should consider some of the following elements.
+
+*** Traceability
+
+*** Flexibility/Modularity 
+
+*** Discoverability
+
+*** Reproducibility
+
+*** Usability
+
+*** Compatibility
+
+*** Security
+
+*** Maintainability
+
+*** Supportability
+
+*** Characteristic Examples
+
+|------------------------+--------------------------------------------------------------------------------------------------------------------|
+| Characteristic         | Examples                                                                                                           |
+|------------------------+--------------------------------------------------------------------------------------------------------------------|
+| Traceability           | - Source of contributing elements to an IB update/any regulatory document                                          |
+|                        | - Identify sources informing Clinical Milestone Decisions / Submissions                                            |
+| Flexibility/Modularity | - Introduce new Modeling Workflows from existing Systems, Tools creating new methodologies                         |
+| Discoverability        | - Locate MIDD Results contributing to Label Statements and existing model types                                    |
+| Reproducibility        | - Full environment information for an analysis for 5+ years ago                                                    |
+|                        | - Reproduce results with original or updated tools, environments                                                   |
+| Usability              | - New user is ready to run analysis in 1 week                                                                      |
+|                        | - New tool is seamlessly added to environment                                                                      |
+|                        | - Tool update testing automation                                                                                   |
+| Compatibility          | - Creating complete automation workflows as with visual representation of relationships between steps/data/reports |
+| Security               | - Control access/share blinded/restricted data in alignment with policy/SOP                                        |
+| Maintainability        | - As new features become available for existing tools, they are rapidly rolled out to users                        |
+| Supportability         | - Fast resolution to even non-critical user issues                                                                 |
+|                        | - Efficient use of expertise, reduce business effort                                                               |
+|------------------------+--------------------------------------------------------------------------------------------------------------------|
+** Ideal components of an MIDD technology and instrastructure environment
+*** Repository system
+**** Artifact management
+**** artifact versioning
+**** Security/access control features
+**** system validation/qualification repository
+**** analysis tools validation/qualification repository
+*** Library of standard codes/models/etc
+*** Direct connection to compute environments (cloud/internal cluster/etc.)
+*** Quality system
+*** reporting capabilities
+     preferably a reporting system that incorporates traceability to source components and outcomes (modeling results, reports, diagnostics, etc.)
+
+** Use cases
+*** Clinical PKPD
+*** Preclinical PKPD
+*** Application of MIDD
+*** Application of EQDD (Enhanced Quantitative Decision Making - Ken Kowalski PTS approaches)
+*** Application for QSP
+** What do I need to prepare for internal/external regulatory audits?
+*** do I need to do anything?
+*** what does my organization do?
+** Controlled Environment (Traceability)
+*** Commercial systems
+*** Can I get by with
+**** a github account?
+**** internal github/gitea server
+**** how?
+** Elements of Reproducibility
+*** How does one get started?
+** How to influence your environment/IT 
+** Computation Environment Options
+*** Local/Laptop - how much can you achieve
+*** Small Server
+*** Cloud
+**** Platforms: Azure/AWS/Google/Oracle 
+** Validation/Qualification?
+*** Current Standards:
+The [[https://github.com/pharmaR/white_paper][R Validation Hub White Paper]] discusses the importance of considering infrastructure and software/tools validation separately and focuses on
+the validation of software validation with a focus on the R programming language (reference) specifically. Within this section this paper
+provides some of the considerations required for developing and maintaining a qualified infrastructure environment and its relationship
+to an audit ready MIDD platform and the PKPD/analysis tools it supports.
+
+**** https://github.com/pharmaR/case_studies
+*** Do I need to do this?
+*** Who does it?
+*** What documentation?
+*** For PKPD Tools too?
+*** Just for my compute environment?
+*** How much information do I need to maintain for my compute environment?
+** Backup strategies??????
+** Resources to get started
+*** ISoP of course
